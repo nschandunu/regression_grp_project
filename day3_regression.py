@@ -47,3 +47,37 @@ pred3 = m3.predict(te[feats])
 
 print("test R2 :", r2_score(te["price"], pred3))
 print("test RMSE:", np.sqrt(mean_squared_error(te["price"], pred3)))
+
+# Part E1 - Compare feature combinations
+
+models = [
+    ["size"],
+    ["size", "rooms"],
+    ["size", "rooms", "age"]
+]
+
+for feats in models:
+    model = LinearRegression().fit(tr[feats], tr["price"])
+    pred = model.predict(te[feats])
+    r2 = r2_score(te["price"], pred)
+    print(feats, "-> Test R2:", round(r2, 3))
+
+# Part E2 - Add a useless feature
+
+tr = tr.copy()
+te = te.copy()
+
+tr["noise"] = np.random.rand(len(tr))
+te["noise"] = np.random.rand(len(te))
+
+m4 = LinearRegression().fit(
+    tr[["size", "rooms", "age", "noise"]],
+    tr["price"]
+)
+
+pred4 = m4.predict(te[["size", "rooms", "age", "noise"]])
+
+print(
+    "with noise -> Test R2:",
+    r2_score(te["price"], pred4)
+)
