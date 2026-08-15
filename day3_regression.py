@@ -35,3 +35,15 @@ yte = te["price"]
 print("MAE :", mean_absolute_error(yte, pred))
 print("RMSE:", np.sqrt(mean_squared_error(yte, pred)))
 print("R2  :", r2_score(yte, pred))
+
+feats = ["size", "rooms", "age"]
+
+m3 = LinearRegression().fit(tr[feats], tr["price"])
+
+print("coefficients:", m3.coef_)
+print("intercept   :", m3.intercept_)
+
+pred3 = m3.predict(te[feats])
+
+print("test R2 :", r2_score(te["price"], pred3))
+print("test RMSE:", np.sqrt(mean_squared_error(te["price"], pred3)))
