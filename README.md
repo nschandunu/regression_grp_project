@@ -9,4 +9,4 @@ myvenv\Scripts\activate
 #mac / linux 
 source <name>/bin/activate
 
-pip install pandas numpy matplotlib scirt-learn
+pip install pandas numpy matplotlib scikit-learn
