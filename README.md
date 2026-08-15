@@ -1,5 +1,5 @@
-python3 -m vnev <name>
-python3 -m vnev myvenv
+python3 -m venv <name>
+python3 -m venv myvenv
 
 #windows
 
@@ -9,4 +9,4 @@ myvenv\Scripts\activate
 #mac / linux 
 source <name>/bin/activate
 
-pip install pandas numpy matplotlib scirt-learn
+pip install pandas numpy matplotlib scikit-learn
