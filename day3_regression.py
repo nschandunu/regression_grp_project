@@ -26,3 +26,12 @@ m = LinearRegression().fit(X, y)
 print("slope    :", m.coef_[0])
 print("intercept:", m.intercept_)
 print("predict size=18:", m.predict([[18]])[0])
+
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+pred = m.predict(te[["size"]])
+yte = te["price"]
+
+print("MAE :", mean_absolute_error(yte, pred))
+print("RMSE:", np.sqrt(mean_squared_error(yte, pred)))
+print("R2  :", r2_score(yte, pred))
